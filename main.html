@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programming Assignments Solutions</title>
+    <!-- <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.2.4/dist/tailwind.min.css" rel="stylesheet"> -->
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+  />
+    <link rel="shortcut icon" href="icon.png" type="image/x-icon">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+   
+
+    <style>
+        .code-container {
+            position: relative;
+        }
+
+        .copy-btn {
+            position: absolute;
+            right: 1rem;
+            top: 1rem;
+            background-color: #670df7;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            cursor: pointer;
+        }
+
+        .copy-btn:hover {
+            background-color: #ea580c;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 text-gray-900 font-sans">
+    <header class="bg-blue-900  p-6 text-center">
+        <h1 class="text-3xl font-bold mb-2 text-white underline">Programming Assignments Solutions</h1>
+        <p class="text-lg mb-4 text-white">Compiled solutions for semester 02 C programming assignments.</p>
+        <p class="text-md font-medium text-pretty text-green-50">Compiled by <span class="font-bold text-red-400">Sagar Kundu</span>, Senior Computer Science Department</p>
+    </header>
+    
+    <main class="p-6">
+        <div id="questions-container" class="space-y-6"></div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-c.min.js"></script>
+    
+    <script>
+        const questionData = {
+            questions: [
+                {
+                    question: "1. WAP to print the sum and product of digits of an integer.",
+                    solution: `
+                    <div class="code-container bg-gray-600 p-4 rounded-md shadow-md">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+                        <pre><code class="language-c">
+#include &lt;stdio.h&gt;
+
+int main(void) {
+    int n, sum = 0, product = 1, digit;
+    printf("Enter an integer: ");
+    scanf("%d", &n);
+    
+    while (n != 0) {
+        digit = n % 10;
+        sum += digit;
+        product *= digit;
+        n /= 10;
+    }
+    
+    printf("Sum of digits: %d\\n", sum);
+    printf("Product of digits: %d\\n", product);
+    
+    return 0;
+}
+                        </code></pre>
+                    </div>
+                `
+                },
+                {
+                    question: "2. WAP to reverse a number.",
+                    solution: `
+                    <div class="code-container bg-gray-600 p-4 rounded-md shadow-md">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+                        <pre><code class="language-c">
+#include &lt;stdio.h&gt;
+
+int main(void) {
+    int num, reversed = 0;
+    printf("Enter an integer: ");
+    scanf("%d", &num);
+    
+    while (num != 0) {
+        reversed = reversed * 10 + num % 10;
+        num /= 10;
+    }
+    
+    printf("Reversed number: %d\\n", reversed);
+    return 0;
+}
+                        </code></pre>
+                    </div>
+                `
+                },
+                {
+                    question: "3. WAP to compute the sum of the first n terms of the following series S = 1 + 1/2 + 1/3 + 1/4 + ...",
+                    solution: `
+                    <div class="code-container bg-gray-600 p-4 rounded-md shadow-md">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+                        <pre><code class="language-c">
+#include &lt;stdio.h&gt;
+
+int main(void) {
+    int n;
+    double sum = 0.0;
+    printf("Enter the number of terms: ");
+    scanf("%d", &n);
+    
+    for (int i = 1; i &lt;= n; i++) {
+        sum += 1.0 / i;
+    }
+    
+    printf("Sum of the series: %.2f\\n", sum);
+    return 0;
+}
+                        </code></pre>
+                    </div>
+                `
+                },
+                {
+                    question: "4. WAP to compute the sum of the first n terms of the following series S = 1 - 2 + 3 - 4 + 5 ...",
+                    solution: `
+                    <div class="code-container bg-gray-600 p-4 rounded-md shadow-md">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+                        <pre><code class="language-c">
+#include &lt;stdio.h&gt;
+
+int main(void) {
+    int n, sum = 0;
+    printf("Enter the number of terms: ");
+    scanf("%d", &n);
+    
+    for (int i = 1; i &lt;= n; i++) {
+        if (i % 2 == 0) {
+            sum -= i;
+        } else {
+            sum += i;
+        }
+    }
+    
+    printf("Sum of the series: %d\\n", sum);
+    return 0;
+}
+                        </code></pre>
+                    </div>
+                `
+                },
+                {
+                    question: "5. Write a function that checks whether a given string is Palindrome or not. Use this function to find whether the string entered by the user is Palindrome or not.",
+                    solution: `
+                    <div class="code-container bg-gray-600 p-4 rounded-md shadow-md">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+                        <pre><code class="language-c">
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+#define MAX_LEN 100
+
+int is_palindrome(char str[]);
+
+int main(void) {
+    char str[MAX_LEN];
+    printf("Enter a string: ");
+    scanf(" %99[^\\n]", str);
+    
+    if (is_palindrome(str)) {
+        printf("%s is a palindrome.\\n", str);
+    } else {
+        printf("%s is not a palindrome.\\n", str);
+    }
+    
+    return 0;
+}
+
+int is_palindrome(char str[]) {
+    int length = strlen(str);
+    for (int i = 0; i &lt; length / 2; i++) {
+        if (str[i] != str[length - i - 1]) {
+            return 0;
+        }
+    }
+    return 1;
+}
+                        </code></pre>
+                    </div>
+                `
+                },
+                {
+                    question: "6. Write a function to find whether a given number is prime or not. Use the same to generate the prime numbers less than 100.",
+                    solution: `
+                    <div class="code-container bg-gray-600 p-4 rounded-md shadow-md">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+                        <pre><code class="language-c">
+#include &lt;stdio.h&gt;
+
+int is_prime(int num);
+
+int main(void) {
+    printf("Prime numbers less than 100:\\n");
+    for (int i = 2; i &lt; 100; i++) {
+        if (is_prime(i)) {
+            printf("%d ", i);
+        }
+    }
+    printf("\\n");
+    return 0;
+}
+
+int is_prime(int num) {
+    if (num &lt; 2) return 0;
+    for (int i = 2; i &lt; num; i++) {
+        if (num % i == 0) return 0;
+    }
+    return 1;
+}
+                        </code></pre>
+                    </div>
+                `
+                },
+                {
+                    question: "7. WAP to compute the factors of a given number.",
+                    solution: `
+                    <div class="code-container bg-gray-600 p-4 rounded-md shadow-md">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+                        <pre><code class="language-c">
+#include &lt;stdio.h&gt;
+
+int main(void) {
+    int num;
+    printf("Enter a number: ");
+    scanf("%d", &num);
+    
+    printf("Factors of %d are: ", num);
+    for (int i = 1; i &lt;= num; i++) {
+        if (num % i == 0) {
+            printf("%d ", i);
+        }
+    }
+    printf("\\n");
+    return 0;
+}
+                        </code></pre>
+                    </div>
+                `
+                },
+                {
+                    question: "8. Write a macro that swaps two numbers. WAP to use it.",
+                    solution: `
+                    <div class="code-container bg-gray-600 p-4 rounded-md shadow-md">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+                        <pre><code class="language-c">
+#include &lt;stdio.h&gt;
+
+#define SWAP(a, b) do { int temp = a; a = b; b = temp; } while (0)
+
+int main(void) {
+    int x, y;
+    printf("Enter two numbers: ");
+    scanf("%d %d", &x, &y);
+    
+    SWAP(x, y);
+    
+    printf("After swapping: x = %d, y = %d\\n", x, y);
+    return 0;
+}
+                        </code></pre>
+                    </div>
+                `
+                },
+                {
+                    question: "10. WAP to perform following actions on an array entered by the user:",
+                    solution: `
+                    <div class="code-container bg-gray-600 p-4 rounded-md shadow-md">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+                        <pre><code class="language-c">
+#include &lt;stdio.h&gt;
+
+void print_array(int arr[], int size);
+void find_max_min(int arr[], int size);
+
+int main(void) {
+    int size;
+    printf("Enter the size of the array: ");
+    scanf("%d", &size);
+    
+    int arr[size];
+    printf("Enter %d elements:\\n", size);
+    for (int i = 0; i &lt; size; i++) {
+        scanf("%d", &arr[i]);
+    }
+    
+    printf("Array elements: ");
+    print_array(arr, size);
+    
+    find_max_min(arr, size);
+    
+    return 0;
+}
+
+void print_array(int arr[], int size) {
+    for (int i = 0; i &lt; size; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\\n");
+}
+
+void find_max_min(int arr[], int size) {
+    int max = arr[0];
+    int min = arr[0];
+    
+    for (int i = 1; i &lt; size; i++) {
+        if (arr[i] &gt; max) max = arr[i];
+        if (arr[i] &lt; min) min = arr[i];
+    }
+    
+    printf("Maximum element: %d\\n", max);
+    printf("Minimum element: %d\\n", min);
+}
+                        </code></pre>
+                    </div>
+                `
+                },
+                {
+                    question: "11. WAP that prints a table indicating the number of occurrences of each alphabet in the text entered as command line arguments.",
+                    solution: `
+                    <div class="code-container bg-gray-600 p-4 rounded-md shadow-md">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+                        <pre><code class="language-c">
+#include &lt;stdio.h&gt;
+#include &lt;ctype.h&gt;
+
+#define ALPHABET_SIZE 26
+
+int main(int argc, char *argv[]) {
+    int count[ALPHABET_SIZE] = {0};
+    
+    for (int i = 1; i &lt; argc; i++) {
+        for (int j = 0; argv[i][j] != '\\0'; j++) {
+            char ch = tolower(argv[i][j]);
+            if (ch &gt;= 'a' &amp;&amp; ch &lt;= 'z') {
+                count[ch - 'a']++;
+            }
+        }
+    }
+    
+    printf("Character occurrences:\\n");
+    for (int i = 0; i &lt; ALPHABET_SIZE; i++) {
+        if (count[i] &gt; 0) {
+            printf("%c: %d\\n", 'a' + i, count[i]);
+        }
+    }
+    
+    return 0;
+}
+                        </code></pre>
+                    </div>
+                `
+                },
+                {
+                    question: "12. Write a program that swaps two numbers using pointers.",
+                    solution: `
+                    <div class="code-container bg-gray-600 p-4 rounded-md shadow-md">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+                        <pre><code class="language-c">
+#include &lt;stdio.h&gt;
+
+void swap(int *a, int *b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+int main(void) {
+    int x, y;
+    printf("Enter two numbers: ");
+    scanf("%d %d", &x, &y);
+    
+    swap(&x, &y);
+    
+    printf("After swapping: x = %d, y = %d\\n", x, y);
+    return 0;
+}
+                        </code></pre>
+                    </div>
+                `
+                },
+                {
+                    question: "13. Write a program in which a function is passed the address of two variables and then alters its contents.",
+                    solution: `
+                    <div class="code-container bg-gray-600 p-4 rounded-md shadow-md">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+                        <pre><code class="language-c">
+#include &lt;stdio.h&gt;
+
+void modify_values(int *a, int *b) {
+    *a += 10;
+    *b -= 5;
+}
+
+int main(void) {
+    int x = 20, y = 30;
+    printf("Before modification: x = %d, y = %d\\n", x, y);
+    
+    modify_values(&x, &y);
+    
+    printf("After modification: x = %d, y = %d\\n", x, y);
+    return 0;
+}
+                        </code></pre>
+                    </div>
+                `
+                },
+                {
+                    question: "14. Write a program which takes the radius of a circle as input from the user, passes it to another function that computes the area and the circumference of the circle, and displays the value of area and circumference from the main() function.",
+                    solution: `
+                    <div class="code-container bg-gray-600 p-4 rounded-md shadow-md">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+                        <pre><code class="language-c">
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+#define PI 3.141592653589793
+
+void calculate_circle_properties(double radius, double *area, double *circumference) {
+    *area = PI * radius * radius;
+    *circumference = 2 * PI * radius;
+}
+
+int main(void) {
+    double radius, area, circumference;
+    printf("Enter the radius of the circle: ");
+    scanf("%lf", &radius);
+    
+    calculate_circle_properties(radius, &area, &circumference);
+    
+    printf("Area: %.2f\\n", area);
+    printf("Circumference: %.2f\\n", circumference);
+    return 0;
+}
+                        </code></pre>
+                    </div>
+                `
+                },
+                {
+                    question: "15. Write a program to find the sum of n elements entered by the user. To write this program, allocate memory dynamically using malloc() / calloc() functions or new operator.",
+                    solution: `
+                    <div class="code-container bg-gray-600 p-4 rounded-md shadow-md">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+                        <pre><code class="language-c">
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main(void) {
+    int n;
+    printf("Enter the number of elements: ");
+    scanf("%d", &n);
+    
+    int *arr = (int *)malloc(n * sizeof(int));
+    if (arr == NULL) {
+        printf("Memory allocation failed\\n");
+        return 1;
+    }
+    
+    printf("Enter %d elements:\\n", n);
+    int sum = 0;
+    for (int i = 0; i &lt; n; i++) {
+        scanf("%d", &arr[i]);
+        sum += arr[i];
+    }
+    
+    printf("Sum of elements: %d\\n", sum);
+    free(arr);
+    return 0;
+}
+                        </code></pre>
+                    </div>
+                `
+                },
+                {
+                    question: "16. Write a menu-driven program to perform the following operations on strings:",
+                    solution: `
+                    <div class="code-container bg-gray-600 p-4 rounded-md shadow-md">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+                        <pre><code class="language-c">
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+#include &lt;ctype.h&gt;
+
+void show_address(char *str);
+void concat_without_strcat(char *dest, char *src);
+void concat_with_strcat(char *dest, char *src);
+int compare_strings(char *str1, char *str2);
+int length_of_string(char *str);
+void to_uppercase(char *str);
+void to_lowercase(char *str);
+int count_vowels(char *str);
+void reverse_string(char *str);
+
+int main(void) {
+    int choice;
+    char str1[100], str2[100];
+    
+    do {
+        printf("\\nMenu:\\n");
+        printf("1. Show address of each character in string\\n");
+        printf("2. Concatenate two strings without using strcat function\\n");
+        printf("3. Concatenate two strings using strcat function\\n");
+        printf("4. Compare two strings\\n");
+        printf("5. Calculate length of the string (use pointers)\\n");
+        printf("6. Convert all lowercase characters to uppercase\\n");
+        printf("7. Convert all uppercase characters to lowercase\\n");
+        printf("8. Calculate number of vowels\\n");
+        printf("9. Reverse the string\\n");
+        printf("10. Quit\\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+        getchar();  // to consume the newline character
+        
+        switch (choice) {
+            case 1:
+                printf("Enter a string: ");
+                fgets(str1, sizeof(str1), stdin);
+                show_address(str1);
+                break;
+            case 2:
+                printf("Enter first string: ");
+                fgets(str1, sizeof(str1), stdin);
+                printf("Enter second string: ");
+                fgets(str2, sizeof(str2), stdin);
+                concat_without_strcat(str1, str2);
+                printf("Concatenated string: %s\\n", str1);
+                break;
+            case 3:
+                printf("Enter first string: ");
+                fgets(str1, sizeof(str1), stdin);
+                printf("Enter second string: ");
+                fgets(str2, sizeof(str2), stdin);
+                concat_with_strcat(str1, str2);
+                printf("Concatenated string: %s\\n", str1);
+                break;
+            case 4:
+                printf("Enter first string: ");
+                fgets(str1, sizeof(str1), stdin);
+                printf("Enter second string: ");
+                fgets(str2, sizeof(str2), stdin);
+                int result = compare_strings(str1, str2);
+                if (result == 0) {
+                    printf("Strings are equal\\n");
+                } else if (result &lt; 0) {
+                    printf("First string is less than second string\\n");
+                } else {
+                    printf("First string is greater than second string\\n");
+                }
+                break;
+            case 5:
+                printf("Enter a string: ");
+                fgets(str1, sizeof(str1), stdin);
+                printf("Length of the string: %d\\n", length_of_string(str1));
+                break;
+            case 6:
+                printf("Enter a string: ");
+                fgets(str1, sizeof(str1), stdin);
+                to_uppercase(str1);
+                printf("Uppercase string: %s\\n", str1);
+                break;
+            case 7:
+                printf("Enter a string: ");
+                fgets(str1, sizeof(str1), stdin);
+                to_lowercase(str1);
+                printf("Lowercase string: %s\\n", str1);
+                break;
+            case 8:
+                printf("Enter a string: ");
+                fgets(str1, sizeof(str1), stdin);
+                printf("Number of vowels: %d\\n", count_vowels(str1));
+                break;
+            case 9:
+                printf("Enter a string: ");
+                fgets(str1, sizeof(str1), stdin);
+                reverse_string(str1);
+                printf("Reversed string: %s\\n", str1);
+                break;
+            case 10:
+                printf("Quitting the program.\\n");
+                break;
+            default:
+                printf("Invalid choice, please try again.\\n");
+        }
+    } while (choice != 10);
+    
+    return 0;
+}
+
+void show_address(char *str) {
+    for (int i = 0; str[i] != '\\0'; i++) {
+        printf("Address of %c: %p\\n", str[i], (void*)&str[i]);
+    }
+}
+
+void concat_without_strcat(char *dest, char *src) {
+    while (*dest != '\\0') dest++;
+    while (*src != '\\0') {
+        *dest++ = *src++;
+    }
+    *dest = '\\0';
+}
+
+void concat_with_strcat(char *dest, char *src) {
+    strcat(dest, src);
+}
+
+int compare_strings(char *str1, char *str2) {
+    return strcmp(str1, str2);
+}
+
+int length_of_string(char *str) {
+    return strlen(str);
+}
+
+void to_uppercase(char *str) {
+    for (int i = 0; str[i] != '\\0'; i++) {
+        str[i] = toupper(str[i]);
+    }
+}
+
+void to_lowercase(char *str) {
+    for (int i = 0; str[i] != '\\0'; i++) {
+        str[i] = tolower(str[i]);
+    }
+}
+
+int count_vowels(char *str) {
+    int count = 0;
+    for (int i = 0; str[i] != '\\0'; i++) {
+        char ch = tolower(str[i]);
+        if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u') {
+            count++;
+        }
+    }
+    return count;
+}
+
+void reverse_string(char *str) {
+    int length = strlen(str);
+    for (int i = 0; i &lt; length / 2; i++) {
+        char temp = str[i];
+        str[i] = str[length - i - 2];
+        str[length - i - 2] = temp;
+    }
+}
+                        </code></pre>
+                    </div>
+                `
+                },
+                {
+                    question: "17. Given two ordered arrays of integers, write a program to merge the two-arrays to get an ordered array.",
+                    solution: `
+                    <div class="code-container bg-gray-600 p-4 rounded-md shadow-md">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+                        <pre><code class="language-c">
+#include &lt;stdio.h&gt;
+
+void merge_sorted_arrays(int arr1[], int size1, int arr2[], int size2, int result[]);
+
+int main(void) {
+    int arr1[] = {1, 3, 5, 7};
+    int arr2[] = {2, 4, 6, 8};
+    int size1 = sizeof(arr1) / sizeof(arr1[0]);
+    int size2 = sizeof(arr2) / sizeof(arr2[0]);
+    int result[size1 + size2];
+    
+    merge_sorted_arrays(arr1, size1, arr2, size2, result);
+    
+    printf("Merged array: ");
+    for (int i = 0; i &lt; size1 + size2; i++) {
+        printf("%d ", result[i]);
+    }
+    printf("\\n");
+    
+    return 0;
+}
+
+void merge_sorted_arrays(int arr1[], int size1, int arr2[], int size2, int result[]) {
+    int i = 0, j = 0, k = 0;
+    
+    while (i &lt; size1 &amp;&amp; j &lt; size2) {
+        if (arr1[i] &lt;= arr2[j]) {
+            result[k++] = arr1[i++];
+        } else {
+            result[k++] = arr2[j++];
+        }
+    }
+    
+    while (i &lt; size1) {
+        result[k++] = arr1[i++];
+    }
+    
+    while (j &lt; size2) {
+        result[k++] = arr2[j++];
+    }
+}
+                        </code></pre>
+                    </div>
+                `
+                },
+                {
+                    question: "18. WAP to display Fibonacci series (i) using recursion, (ii) using iteration.",
+                    solution: `
+                    <div class="code-container bg-gray-600 p-4 rounded-md shadow-md">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+                        <pre><code class="language-c">
+#include &lt;stdio.h&gt;
+
+void fibonacci_recursion(int n);
+void fibonacci_iteration(int n);
+
+int main(void) {
+    int n;
+    printf("Enter the number of terms: ");
+    scanf("%d", &n);
+    
+    printf("Fibonacci series (Recursion):\\n");
+    fibonacci_recursion(n);
+    printf("\\n");
+    
+    printf("Fibonacci series (Iteration):\\n");
+    fibonacci_iteration(n);
+    printf("\\n");
+    
+    return 0;
+}
+
+void fibonacci_recursion(int n) {
+    static int a = 0, b = 1;
+    if (n &gt; 0) {
+        printf("%d ", a);
+        int next = a + b;
+        a = b;
+        b = next;
+        fibonacci_recursion(n - 1);
+    }
+}
+
+void fibonacci_iteration(int n) {
+    int a = 0, b = 1;
+    for (int i = 0; i &lt; n; i++) {
+        printf("%d ", a);
+        int next = a + b;
+        a = b;
+        b = next;
+    }
+}
+                        </code></pre>
+                    </div>
+                `
+                },
+                {
+                    question: "19. WAP to calculate Factorial of a number (i) using recursion, (ii) using iteration.",
+                    solution: `
+                    <div class="code-container bg-gray-600 p-4 rounded-md shadow-md">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+                        <pre><code class="language-c">
+#include &lt;stdio.h&gt;
+
+int factorial_recursion(int n);
+int factorial_iteration(int n);
+
+int main(void) {
+    int n;
+    printf("Enter a number: ");
+    scanf("%d", &n);
+    
+    printf("Factorial (Recursion): %d\\n", factorial_recursion(n));
+    printf("Factorial (Iteration): %d\\n", factorial_iteration(n));
+    
+    return 0;
+}
+
+int factorial_recursion(int n) {
+    if (n &lt;= 1) return 1;
+    return n * factorial_recursion(n - 1);
+}
+
+int factorial_iteration(int n) {
+    int result = 1;
+    for (int i = 1; i &lt;= n; i++) {
+        result *= i;
+    }
+    return result;
+}
+                        </code></pre>
+                    </div>
+                `
+                },
+                {
+                    question: "20. Write a program to check whether a given number is prime or not.",
+                    solution: `
+                    <div class="code-container bg-gray-600 p-4 rounded-md shadow-md">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+                        <pre><code class="language-c">
+#include &lt;stdio.h&gt;
+#include &lt;stdbool.h&gt;
+
+bool is_prime(int n);
+
+int main(void) {
+    int n;
+    printf("Enter a number: ");
+    scanf("%d", &n);
+    
+    if (is_prime(n)) {
+        printf("%d is a prime number.\\n", n);
+    } else {
+        printf("%d is not a prime number.\\n", n);
+    }
+    
+    return 0;
+}
+
+bool is_prime(int n) {
+    if (n &lt;= 1) return false;
+    if (n &lt;= 3) return true;
+    if (n % 2 == 0 || n % 3 == 0) return false;
+    
+    for (int i = 5; i * i &lt;= n; i += 6) {
+        if (n % i == 0 || n % (i + 2) == 0) return false;
+    }
+    
+    return true;
+}
+                        </code></pre>
+                    </div>
+                `
+                },
+                {
+                    question: "21. Write a program to check whether a given number is a palindrome or not.",
+                    solution: `
+                    <div class="code-container bg-gray-600 p-4 rounded-md shadow-md">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+                        <pre><code class="language-c">
+#include &lt;stdio.h&gt;
+
+int reverse_number(int n);
+
+int main(void) {
+    int n;
+    printf("Enter a number: ");
+    scanf("%d", &n);
+    
+    if (n == reverse_number(n)) {
+        printf("%d is a palindrome.\\n", n);
+    } else {
+        printf("%d is not a palindrome.\\n", n);
+    }
+    
+    return 0;
+}
+
+int reverse_number(int n) {
+    int reversed = 0;
+    while (n != 0) {
+        reversed = reversed * 10 + n % 10;
+        n /= 10;
+    }
+    return reversed;
+}
+                        </code></pre>
+                    </div>
+                `
+                }
+            ]
+        };
+
+
+        function renderQuestions() {
+        const container = document.getElementById('questions-container');
+        if (!container) {
+            console.error('Element with ID "questions-container" not found.');
+            return;
+        }
+        
+        questionData.questions.forEach(q => {
+            const questionElement = document.createElement('div');
+            questionElement.classList.add('mb-6');
+            questionElement.innerHTML = `
+                <h2 class="text-lg font-semibold mb-2">${q.question}</h2>
+                ${q.solution}
+            `;
+            container.appendChild(questionElement);
+            Prism.highlightAll(); // Ensure syntax highlighting is applied
+        });
+    }
+
+    function copyCode(button) {
+        const code = button.nextElementSibling.querySelector('code').innerText;
+        navigator.clipboard.writeText(code).then(() => {
+            alert('Code copied to clipboard!');
+        }).catch(err => {
+            console.error('Failed to copy code: ', err);
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', renderQuestions);
+</script>
+
+</body>
+</html>
