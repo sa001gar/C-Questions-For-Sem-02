@@ -1335,164 +1335,10 @@ Exiting...
     </div>
     `,
     },
-    {
-        "question": "22. Write a menu-driven program to perform following operations on a matrix: <br><br> i) Print the even-valued elements <br> ii) Print the odd-valued elements <br> iii) Calculate and print the sum and average of the elements <br> iv) Print the maximum and minimum element <br> v) Remove the duplicates from the array <br> vi) Print the array in reverse order.",
-        "solution": `
-        <div class="code-container bg-gray-600 p-4 rounded-md shadow-md">
-            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
-            <pre><code class="language-c">
-    #include &lt;stdio.h&gt;
     
-    void printEven(int arr[], int size) {
-        printf("Even-valued elements: ");
-        for (int i = 0; i &lt; size; i++) {
-            if (arr[i] % 2 == 0) {
-                printf("%d ", arr[i]);
-            }
-        }
-        printf("\\n");
-    }
-    
-    void printOdd(int arr[], int size) {
-        printf("Odd-valued elements: ");
-        for (int i = 0; i &lt; size; i++) {
-            if (arr[i] % 2 != 0) {
-                printf("%d ", arr[i]);
-            }
-        }
-        printf("\\n");
-    }
-    
-    void calculateSumAndAverage(int arr[], int size) {
-        int sum = 0;
-        for (int i = 0; i &lt; size; i++) {
-            sum += arr[i];
-        }
-        float average = (float)sum / size;
-        printf("Sum: %d, Average: %.2f\\n", sum, average);
-    }
-    
-    void findMaxAndMin(int arr[], int size) {
-        int max = arr[0], min = arr[0];
-        for (int i = 1; i &lt; size; i++) {
-            if (arr[i] &gt; max) max = arr[i];
-            if (arr[i] &lt; min) min = arr[i];
-        }
-        printf("Maximum: %d, Minimum: %d\\n", max, min);
-    }
-    
-    void removeDuplicates(int arr[], int *size) {
-        int temp[*size];
-        int index = 0;
-    
-        for (int i = 0; i &lt; *size; i++) {
-            int j;
-            for (j = 0; j &lt; index; j++) {
-                if (arr[i] == temp[j]) break;
-            }
-            if (j == index) {
-                temp[index++] = arr[i];
-            }
-        }
-        for (int i = 0; i &lt; index; i++) {
-            arr[i] = temp[i];
-        }
-        *size = index;
-    }
-    
-    void printReverse(int arr[], int size) {
-        printf("Array in reverse order: ");
-        for (int i = size - 1; i &gt;= 0; i--) {
-            printf("%d ", arr[i]);
-        }
-        printf("\\n");
-    }
-    
-    int main() {
-        int arr[100], size, choice;
-    
-        printf("Enter number of elements in the array: ");
-        scanf("%d", &size);
-        for (int i = 0; i &lt; size; i++) {
-            printf("Enter element %d: ", i + 1);
-            scanf("%d", &arr[i]);
-        }
-    
-        do {
-            printf("\\nMenu:\\n");
-            printf("1. Print even-valued elements\\n");
-            printf("2. Print odd-valued elements\\n");
-            printf("3. Calculate sum and average\\n");
-            printf("4. Print maximum and minimum\\n");
-            printf("5. Remove duplicates\\n");
-            printf("6. Print array in reverse order\\n");
-            printf("7. Re-enter array\\n");
-            printf("8. Exit\\n");
-            printf("Enter your choice: ");
-            scanf("%d", &choice);
-    
-            switch (choice) {
-                case 1:
-                    printEven(arr, size);
-                    break;
-                case 2:
-                    printOdd(arr, size);
-                    break;
-                case 3:
-                    calculateSumAndAverage(arr, size);
-                    break;
-                case 4:
-                    findMaxAndMin(arr, size);
-                    break;
-                case 5:
-                    removeDuplicates(arr, &size);
-                    printf("Duplicates removed. New size: %d\\n", size);
-                    break;
-                case 6:
-                    printReverse(arr, size);
-                    break;
-                case 7:
-                    printf("Enter number of elements in the new array: ");
-                    scanf("%d", &size);
-                    for (int i = 0; i &lt; size; i++) {
-                        printf("Enter element %d: ", i + 1);
-                        scanf("%d", &arr[i]);
-                    }
-                    break;
-                case 8:
-                    printf("Exiting...\n");
-                    break;
-                default:
-                    printf("Invalid choice. Please try again.\\n");
-            }
-        } while (choice != 8);
-    
-        return 0;
-    }
-            </code></pre>
-        </div>
-        <div class="output-container bg-orange-200 p-4 rounded-md shadow-md mt-1">
-            <h3 class="text-lg font-semibold">Expected Output:</h3>
-            <pre>
-    Menu:
-    1. Print even-valued elements
-    2. Print odd-valued elements
-    3. Calculate sum and average
-    4. Print maximum and minimum
-    5. Remove duplicates
-    6. Print array in reverse order
-    7. Re-enter array
-    8. Exit
-    Enter your choice: 1
-    Even-valued elements: 2 4 6 8 
-            </pre>
-        </div>
-        `
-    }
-,    
     {
       question:
-        "23. Write a program to calculate the sum, difference, product, and transpose of two matrices.",
+        "22. Write a program to calculate the sum, difference, product, and transpose of two matrices.",
       solution: `
     <div class="code-container bg-gray-600 p-4 rounded-md shadow-md">
         <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
@@ -1654,7 +1500,7 @@ Transpose of Matrix A:
     },
     {
       question:
-        "24. Write a program to calculate the area of a rectangle, square, circle, and triangle.",
+        "23. Write a program to calculate the area of a rectangle, square, circle, and triangle.",
       solution: `
     <div class="code-container bg-gray-600 p-4 rounded-md shadow-md">
         <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
@@ -1717,7 +1563,7 @@ int main() {
     },
     {
       question:
-        "25. Write a program to display the first n terms of the Fibonacci series.",
+        "24. Write a program to display the first n terms of the Fibonacci series.",
       solution: `
     <div class="code-container bg-gray-600 p-4 rounded-md shadow-md">
         <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
@@ -1752,7 +1598,7 @@ int main() {
     `,
     },
     {
-      question: "26. Write a program to find the factorial of a given number.",
+      question: "25. Write a program to find the factorial of a given number.",
       solution: `
     <div class="code-container bg-gray-600 p-4 rounded-md shadow-md">
         <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
@@ -1779,6 +1625,58 @@ int main() {
     </div>
     `,
     },
+    {
+        question:
+          "26. . WAP to find sum of the following series for n terms: 1 – 2/2! + 3/3! --------- n/n!",
+        solution: `
+      <div class="code-container bg-gray-600 p-4 rounded-md shadow-md">
+          <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+          <pre><code class="language-c">
+  #include &lt;stdio.h&gt;
+
+// Function to calculate factorial of a number
+long factorial(int num) {
+    long fact = 1;
+    for (int i = 1; i <= num; i++) {
+        fact *= i;
+    }
+    return fact;
+}
+
+int main() {
+    int n;
+    double sum = 0;
+
+    // Input number of terms
+    printf("Enter the number of terms: ");
+    scanf("%d", &n);
+
+    // Calculate sum of the series
+    for (int i = 1; i <= n; i++) {
+        if (i % 2 == 0) {
+            sum -= (double)i / factorial(i);
+        } else {
+            sum += (double)i / factorial(i);
+        }
+    }
+
+    // Output the result
+    printf("Sum of the series: %.5lf\\n", sum);
+    
+    return 0;
+}
+
+          </code></pre>
+      </div>
+      <div class="output-container bg-orange-200 p-4 rounded-md shadow-md mt-1">
+          <h3 class="text-lg font-semibold">Expected Output:</h3>
+          <pre>
+Enter the number of terms: 5
+Sum of the series: 0.56667</pre>
+      </div>
+      `,
+      },
+
     {
       question:
         "27. Write a program to calculate the sum and product of two compatible matrices.",
