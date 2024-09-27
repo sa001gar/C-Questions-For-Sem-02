@@ -10,6 +10,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css"
       rel="stylesheet"
     />
+   
     <script defer src="questions.js"></script>
     <link rel="shortcut icon" href="icon.png" type="image/x-icon" />
 
@@ -54,6 +55,20 @@
           font-size: 1rem; /* Adjust paragraph size for small screens */
         }
       }
+
+      .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
     </style>
   </head>
 
@@ -74,7 +89,8 @@
     <main class="p-6">
       <div id="questions-container" class="space-y-6 max-w-7xl mx-auto"></div>
     </main>
-
+     <!-- Pop-up element -->
+     <div id="popup" class="popup"></div>
     <footer
       class="text-gray-600 bg-white body-font dark:bg-gray-800 dark:text-white"
     >
@@ -188,6 +204,41 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-c.min.js"></script>
+    <script>
+        document.addEventListener('contextmenu', function(e) {
+                  e.preventDefault();
+                  showPopup("Right-click is disabled on this site.");
+              });
+      
+              document.addEventListener('keydown', function(e) {
+                  // Detect Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
+                  if ((e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) || (e.ctrlKey && e.key === 'U')) {
+                      e.preventDefault();
+                      showPopup("Keyboard shortcuts are disabled on this site.");
+                  }
+              });
+      
+              function showPopup(message) {
+                  const popup = document.getElementById('popup');
+                  popup.innerText = message;
+                  popup.style.display = 'block';
+                  setTimeout(() => {
+                      popup.style.display = 'none';
+                  }, 3000); // Hide after 3 seconds
+              }
+      
+              // Detect if console is open
+              (function() {
+                  const devtools = /./;
+                  devtools.toString = function() {
+                      console.log("If You are here..! You are a good developer.");
+                  };
+                  console.log("%c ", devtools);
+              })();
+      
+      
+      
+          </script>
     <!-- <script src="questions.js"></script> -->
   </body>
 </html>
