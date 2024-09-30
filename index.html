@@ -82,7 +82,7 @@
       </p>
       <p class="text-md font-medium text-green-50">
         Compiled by : <span class="font-bold text-red-400">Sagar Kundu</span>,
-        Computer Science Department (Senior)
+        Department of Computer Science
       </p>
     </header>
 
@@ -227,15 +227,26 @@
                   }, 3000); // Hide after 3 seconds
               }
       
-              // Detect if console is open
+              /* // Detect if console is open
               (function() {
                   const devtools = /./;
                   devtools.toString = function() {
                       console.log("If You are here..! You are a good developer.");
                   };
                   console.log("%c ", devtools);
-              })();
-      
+              })();*/
+              (function() {
+                const devtools = /./;
+                devtools.toString = function() {
+                    // Styled console message
+                    const message = "%cIf you are here..! You are a good developer.";
+                    const style = "color: #ffffff; background-color: royalblue; font-size: 16px; padding: 4px; border-radius: 4px;";
+            
+                    console.log(message, style);
+                };
+                console.log("%c ", devtools); // Trigger the above message
+            })();
+            
       
       
           </script>
