@@ -1251,6 +1251,18 @@ int main() {
     <div class="output-container bg-orange-200 p-4 rounded-md shadow-md mt-1">
         <h3 class="text-lg font-semibold">Expected Output:</h3>
         <pre>
+Enter the number of rows: 3
+Enter the number of columns: 3
+Enter the elements of the matrix:
+Element [0][0]: 2
+Element [0][1]: 3
+Element [0][2]: 3
+Element [1][0]: 3
+Element [1][1]: 3
+Element [1][2]: 5
+Element [2][0]: 5
+Element [2][1]: 5
+Element [2][2]: 4
 Menu:
 1. Print even-valued elements
 2. Print odd-valued elements
